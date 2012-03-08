@@ -1,0 +1,51 @@
+﻿.ui-modal-bg
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.5;
+    background: #ccc;
+}
+.ui-modal-content
+{
+    height: 430px;
+    
+    overflow: auto;
+}
+.ui-modal-close
+{
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    padding-top: -1px;
+    padding-left: 0px;
+    border-radius: 12px;
+    background: #000;
+    border: 6px solid #000;
+    color: #ffffff;
+    width: 10px;
+    font: bold 14px/70% Verdana;
+    text-align: center;
+    cursor: pointer;
+}
+.ui-modal-container
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.ui-modal
+{
+    width: 500px;
+    height: 450px;
+    margin: 0 auto;
+    position: relative;
+    top: 50px;
+    background: #fff;
+    border: 5px solid #ccc;
+    padding: 1em;
+}

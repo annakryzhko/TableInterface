@@ -1,0 +1,7 @@
+﻿.ui-action
+{
+    text-decoration: none;
+    border-bottom: 1px dashed #0000ff;
+    cursor:pointer;
+    color:#0000ff;
+}

@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="js/lib/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="js/lib/jquery_history.js"></script>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/modal.css" rel="stylesheet" type="text/css" />
+    <link href="css/entity.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        Пользователи</h1>
+    <form>
+    <input type="text" class="ui-filter-text" />
+    <select class="ui-filter-select">
+        <option value="">Все</option>
+    </select>&nbsp;&nbsp;&nbsp;<a href="#" class="ui-action person-add">Добавить пользователя</a></form>
+    <table class=" ui-table-data">
+        <thead id="thead_persons" class="ui-fixed-thead">
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div class="persons-formview">
+    </div>
+    <script type="text/javascript" src="js/controls/table.js"></script>
+    <script type="text/javascript" src="js/controls/lightbox.js"></script>
+    <script type="text/javascript" src="js/controls/multipleinput.js"></script>
+    <script type="text/javascript" src="js/utils/utils.js"></script>
+
+    <script type="text/javascript" src="js/engine/history.js"></script>
+    <script type="text/javascript" src="js/engine/mediator.js"></script>
+    <script type="text/javascript" src="js/engine/dataview.js"></script>
+    <script type="text/javascript" src="js/engine/tbl_storage.js"></script>
+    <script type="text/javascript" src="js/engine/template.js"></script>
+    <script type="text/javascript" src="js/engine/AddEditFormControl.js"></script>
+
+    <script type="text/javascript" src="js/filter/filter.js"></script>
+    <script type="text/javascript" src="js/filter/searching.js"></script>
+    <script type="text/javascript" src="js/filter/sortfiltering.js"></script>
+    <script type="text/javascript" src="js/filter/selectfiltering.js"></script>
+    <script type="text/javascript" src="js/persons/data.js"></script>
+    <script type="text/javascript" src="js/persons/Person.js"></script>
+    <script type="text/javascript" src="js/persons/StorageDataInit.js"></script>
+    <script type="text/javascript" src="js/persons/setFilters.js"></script>
+    <script type="text/javascript" src="js/persons/template.js"></script>
+    <script type="text/javascript">
+
+        //  var theadManager = new FixedThead({ selector: "thead.ui-fixed-thead tr" });
+        var PersonsTable = new TblStorage("person");
+        var CityTable = new TblStorage("city");
+
+        CityStorageInit(CityTable, TestData.data);
+        PersonsStorageInit(PersonsTable, TestData.data);
+
+        setFilters(TestData.cols, CityTable)
+
+
+        var PersonDataView = new DataView('table.ui-table-data tbody', PersonsTemplate.TblRows);
+        var persons = PersonsTable.getAllEntities();
+        PersonDataView.view(persons);
+
+        var THeadDataView = new DataView("#thead_persons", TblTemplate.SortCols);
+        THeadDataView.view(TestData.cols);
+
+        var CityDataView = new DataView("select.ui-filter-select", FormTemplate.SelectOptions);
+        var cities = CityTable.getAllEntities();
+        CityDataView.view(cities);
+
+        mediator.dataview = PersonDataView;
+        mediator.storage = PersonsTable;
+
+        
+        var FormView = new DataView(".persons-formview", PersonsTemplate.FormUser);
+        FormView.view(formfields);
+        $(".persons-formview").hide();
+
+
+        var PersonAddEdit = new AddEditFormControl({ but_begin: ".person-add",
+            but_edit: ".person-edit",
+            storage: PersonsTable,
+            formview: ".persons-formview",
+            Entity: Person,
+            addtext: ["Добавить пользователя", "Добавить" ],
+            edittext: ["Редактировать пользователя", "Сохранить" ]
+        });
+
+
+        var mc = new MultipleInput(".ui-multipleinput")
+        
+       
+    </script>
+</body>
+</html>
