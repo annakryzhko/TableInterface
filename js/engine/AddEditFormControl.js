@@ -28,30 +28,36 @@ var AddEditFormControl = function (config) {
         var entity = Entity.createEmpty();
         copy.find('[data-prop]').each(function (index, element) {
             var $elem = $(element);
-            entity.addPropertyValue($elem.attr('data-prop'), $elem.val());
+            entity[$elem.attr('data-prop')] = $elem.rVal();
+            //entity.addPropertyValue($elem.attr('data-prop'), $elem.val());
         });
         return entity;
     }
 
     function serializeEntityToForm(entity, form) {
-        var prop, value;
-        for (prop in entity) {
-            if (entity.hasOwnProperty(prop)) {
-                value = entity[prop];
-                if (utils.array.isArray(value)) {
-                    copy.find('[data-prop="' + prop + '"]').each(function (index, element) {
-                        if (value[index]) {
-                            $(element).val(value[index]);
-                            $(element).parent().removeClass("hide");
-                        }
-                    });
-                }
-                else {
-                    copy.find('[data-prop="' + prop + '"]').first().val(value);
+        copy.find('[data-prop]').each(function (index, element) {
+            var $elem = $(element);
+            $elem.rVal(entity[$elem.attr('data-prop')]);
+        });
+        /*var prop, value;
 
-                }
-            }
+        for (prop in entity) {
+        if (entity.hasOwnProperty(prop)) {
+        value = entity[prop];
+        if (utils.array.isArray(value)) {
+        copy.find('[data-prop="' + prop + '"]').each(function (index, element) {
+        if (value[index]) {
+        $(element).val(value[index]);
+        $(element).parent().removeClass("ui-multiple-hide");
         }
+        });
+        }
+        else {
+        copy.find('[data-prop="' + prop + '"]').first().val(value);
+
+        }
+        }
+        }*/
     }
 
     function showForm(title, but_name, callback) {
