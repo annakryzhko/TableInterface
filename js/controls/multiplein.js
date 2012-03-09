@@ -1,4 +1,5 @@
 var MultipleInputControl = {
+    hide_class: "ui-multiple-hide",
     setValue: function (value) {
         this.find("input[type='text']").each(function (index, element) {
             if (value[index]) {
@@ -28,7 +29,8 @@ var MultipleInputControl = {
 }
 
 function MultipleInput(selector) {
-    var ui_cnts = $(selector);
+    var ui_cnts = $(selector),
+    hide_class = "ui-multiple-hide";
 
     ui_cnts.each(function (index, element) {
         var $elem = $(element),
@@ -40,40 +42,45 @@ function MultipleInput(selector) {
         this.ui_inputs = [];
 
         this.init = function () {
-
             var cnt;
-            $elem.wrap("<div data-prop='" + this.prop + "' class='multipleinput' ></div");
+            $elem.wrap('<div data-prop="' + this.prop + '"  class="multipleinput" />');
             $elem.removeAttr('data-prop')
             .removeAttr('data-length');
             this.ui_buts.push($("<input type='button' value='+' class='ui-multiple-but'>"))
             this.ui_inputs.push($elem);
             this.ui_buts[0].insertAfter($elem);
-            this.ui_buts[0].click(function (e) {
-                var $targ = $(e.target);
-                $targ
-                    .siblings("div.ui-multiple-hide")
-                    .first()
-                    .removeClass(".ui-multiple-hide");
-                if (!$(targ).siblings("div.hide")) {
-                    $targ.attr("disabled", "disabled");
-                }
-            })
+            this.ui_buts[0].click(plusClick);
             for (var i = 1; i < this.max; i++) {
                 this.ui_inputs[i] = $elem.clone(true, true);
                 this.ui_buts[i] = $("<input type='button' value='-'  class='ui-multiple-but'>");
-                cnt = $("<div class='ui-multiple-hide'></div>");
+                cnt = $("<div class='" + hide_class + "'></div>");
                 this.ui_inputs[i].appendTo(cnt);
                 this.ui_buts[i].appendTo(cnt);
                 cnt.insertAfter(this.ui_buts[0]);
-                this.ui_buts[i].click(function (e) {
-                    var targ = e.target;
-                    $(targ).parent().addClass(".ui-multiple-hide");
-                    $(targ).parent().parent().find("input[value='+']").removeAttr("disabled");
-                })
+                this.ui_buts[i].click(minusClick)
             }
 
         }
 
+        function plusClick(e) {
+            var $targ = $(e.target);
+            $targ
+                    .siblings("div." + hide_class)
+                    .first()
+                    .removeClass(hide_class);
+            if (!$targ.siblings("div." + hide_class).length) {
+                $targ.attr("disabled", "disabled");
+            }
+
+        }
+
+        function minusClick(e) {
+            var $targ = $(e.target);
+            $targ.prev("input[type='text']").val("");
+            $targ.parent().addClass(hide_class);
+            $targ.parent().parent().find("input[value='+']").removeAttr("disabled");
+
+        }
         this.init();
     });
 }

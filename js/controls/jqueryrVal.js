@@ -12,7 +12,7 @@ jQuery.fn.rVal = function (value) {
         }
         else {
             if (ele.hasClass("multipleinput")) {
-                MultipleInputControl.getValue.apply(ele);
+                return MultipleInputControl.getValue.apply(ele);
             }
              else {
                 return ele.val();
