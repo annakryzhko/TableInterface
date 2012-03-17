@@ -1,0 +1,99 @@
+﻿table.formtable
+{
+    border-collapse: collapse;
+    border: 0;
+    padding: 0;    
+    width: 99%;   
+    position: relative;
+}
+table.formtable td
+{
+    padding-bottom: 0.5em;
+    vertical-align: top;
+    position: relative;
+}
+table.formtable td:first-child
+{
+    width: 10px;
+    padding-right: 0.5em;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+.ui-required
+{
+    color: Red;
+}
+
+p.ui-warning
+{
+    
+    color: #000;
+    border-radius: 5px;
+    display: none;
+    font-size: 12px;
+    padding: 0.5em;
+    padding-left:30px;
+    border: 1px solid #b68300;
+    width: 90%;
+    background: #fffcd0 url("../img/invalid.png") no-repeat 5px center;
+}
+.ui-invalid-form p.ui-warning
+{    
+    display: block;
+}
+span.ui-invalid
+{
+    position:absolute;
+    display: none;
+    width:250px;
+    right: 0;
+    top:0;
+    z-index:1000;
+    text-align: center;
+    background:  #ffcc00;
+    color: #000;
+    border-radius: 5px;
+    padding: 3px;
+    border: 1px solid #b68300;
+    
+}
+textarea:invalid, input[type="text"]:invalid , input[type="email"]:invalid, input[type="url"]:invalid, input[type="tel"]:invalid, input[type="number"]:invalid
+{
+    outline: none;    
+     -moz-box-shadow:none;
+    -webkit-box-shadow: 0px;
+    box-shadow: 0px;
+    background: url("../img/invalid.png") no-repeat top right;
+    padding-right:20px;
+}
+
+.ui-invalid-form :valid 
+{
+background: url("../img/valid.png") no-repeat top right;
+padding-right:20px;
+    
+}
+ textarea,  input[type="text"] , input[type="email"], input[type="url"], input[type="tel"], input[type="number"]
+{
+    border: 1px solid #ccc;
+    border-radius:1px;
+    outline:none;
+    }
+.ui-invalid-form input[type='submit']:valid 
+{
+background: none;
+    
+}
+
+:focus:invalid + span.ui-invalid
+{
+    display: block;
+}
+
+:valid + span.ui-invalid
+{
+    display: none;
+}
+
+

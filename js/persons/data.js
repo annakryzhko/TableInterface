@@ -1,62 +1,4 @@
-﻿var formfields = 
-[
-            { 'name': 'name_fld',
-            'title': 'Имя',
-            'type':'text',
-            'attr':{'data-prop':'name', 'style':'width:10em;', 'required':"required"}
-            }, 
-
-            {'name':'age_fld', 
-            'title':'Возраст', 
-            'type':'text',
-            'className':'ui-sliderinput',
-            'attr':{'data-min':16, 'data-max':70, 'data-step':1, 'data-prop':'age'}
-            
-        },
-            { 'name': 'salary_fld',
-                'title': 'Зарплата',
-                'type': 'text',
-                'className': 'ui-sliderinput',
-                'attr': { 'data-min': 0, 'data-max': 240000, 'data-step': 200, 'data-prop': 'salary'}
-            },
-            { 'name': 'city_fld',
-                'title': 'Город', 
-                'elem':'a',
-                'className': 'ui-autocomplete',
-                'attr': { 'data-prop': 'city' }            
-            },
-            { 'name': 'phone_fld',
-                'title': 'Тел',
-                'type': 'text',
-                'className':'ui-multipleinput',
-                'attr': { 'data-prop': 'phone', 'data-length':5 }
-            },
-             { 'name': 'email_fld', 'title': 'email',
-               'type': 'text',
-                 'className': 'ui-multipleinput',
-                 'attr': { 'data-prop': 'email', 'data-length': 5 }
-             },
-
-            { 'name': 'site_fld', 'title': 'Сайты',
-              'type': 'text',
-                'className': 'ui-multipleinput',
-                'attr': { 'data-prop': 'site', 'data-length': 5 }
-            },
-
-            { 'name': 'birth_date_fld',
-                'title': 'Дата рождения',
-                'type': 'text',
-                'className': 'ui-calendarinput',
-                'attr': { 'data-prop': 'birth_date' }
-            },
-            {'name':'description_fld',
-                'title': 'Описание',
-            'elem':'textarea',
-            'attr': { 'data-prop': 'description' }
-        }
-           
-    ];
-    
+﻿   
 var TestData = {
     cols: [{ 'name': 'name',
             'title': 'Имя',
@@ -65,8 +7,8 @@ var TestData = {
             {'name':'age', 'title':'Возраст', 'sort':'number', 'sort_prop':'age'},
             {'name':'salary', 'title':'Зарплата', 'sort':'number', 'sort_prop':'salary'},
             {'name':'city', 'title':'Город', 'sort':'abc',  'sort_prop':'city'},
-            {'name':'phone', 'title':'Тел',  'sort':'length', 'sort_prop':'phone'},
-            {'name': 'email', 'title': 'email',  'sort': 'length'  , 'sort_prop':'email'},
+            {'name':'phone', 'title':'Телефоны',  'sort':'length', 'sort_prop':'phone'},
+            {'name': 'email', 'title': 'Почта',  'sort': 'length'  , 'sort_prop':'email'},
             {'name': 'site', 'title': 'Сайты',  'sort': 'length' , 'sort_prop':'site'},
             {'name':'birth_date', 'title':'Дата рождения', 'sort':'number', 'sort_prop':'dUTC'},
             {'name':'description','title':'Описание',  'sort':'abc', 'sort_prop':'description'}

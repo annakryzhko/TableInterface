@@ -15,7 +15,7 @@ PersonsTemplate.TblRows = function (data) {
         str += "<td class='cut' style='max-width:6em;'>" + data[i].site.join(", ") + "</td>";
         str += "<td>" + data[i].localDate + "</td>";
         str += "<td class='cut' style='max-width:6em'>" + data[i].description + "</td>";
-        str += "<td><a class='ui-action person-edit' data-index='" + data[i].index + "'>Редактировать</a></td></tr>";
+        str += "<td><a class='person-edit' data-index='" + data[i].index + "'></a></td></tr>";
     }
     return str;
 }
@@ -23,8 +23,10 @@ PersonsTemplate.TblRows = function (data) {
 
 PersonsTemplate.FormUser = function (data) {
     var str = "<h2></h2>";
-    str += "<input type='submit'  value='but'/>"
+    str += "<p class='ui-warning hide'>Операция не завершена. Исправьте ошибки заполнения формы</p>";
+    str += "<form>"
     str += FormTemplate.TableForm(data);
-    
+    str += "<input type='submit'  value='but' />"
+    str += "</form>"
     return str;
 };

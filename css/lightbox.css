@@ -4,15 +4,14 @@
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 0px;
     opacity: 0.5;
     background: #ccc;
 }
 .ui-modal-content
 {
-    height: 430px;
-    position:relative;
-    overflow: auto;
+    /*height: 430px;     
+    overflow: auto;*/
 }
 .ui-modal-close
 {
@@ -26,7 +25,7 @@
     border: 6px solid #000;
     color: #ffffff;
     width: 10px;
-    font: bold 14px/70% Verdana;
+    font: bold 12px/70% 'Compact';
     text-align: center;
     cursor: pointer;
 }
@@ -40,11 +39,11 @@
 }
 .ui-modal
 {
-    width: 500px;
-    height: 450px;
+    width: 650px;
+    /*height: 450px;*/
     margin: 0 auto;
     position: relative;
-    top: 50px;
+    top: 20px;
     background: #fff;
     border: 5px solid #ccc;
     padding: 1em;

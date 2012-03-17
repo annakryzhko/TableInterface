@@ -10,8 +10,9 @@ var mediator = {
     },
     dataChanged: function(){
         var state = AN_History.getState();
-        this.updateData(state);
+        this.updateData(state.data);
     },
+    
     addFilter: function (obj) {
         this.filters.push(obj);
     },
@@ -24,6 +25,7 @@ var mediator = {
             filters[i].setState(state.data);
         }
     },
+    
     updateData: function (state) {
         var data, i, lng, filters = this.filters;
         lng = filters.length;

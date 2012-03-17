@@ -9,12 +9,13 @@ function setFilters(cols, CityTable) {
             ut_str = utils.string;
         for (var i = 0; i < lng; i++) {
             if (ut_str.filterPattern(data[i].name, param) ||
-                     ut_str.filterPattern(data[i], param)) {
+                     ut_str.filterPattern(data[i].description, param)) {
                 new_data.push(data[i]);
             }
         }
         return new_data;
     }
+
     selectCnt.process = function (data, param) {
         var new_data = [], i, lng = data.length,
             city_name = CityTable.getEntity(param).value;

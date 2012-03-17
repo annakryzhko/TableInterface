@@ -2,34 +2,42 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <script type="text/javascript" src="js/lib/jquery-1.7.1.js"></script>
     <script type="text/javascript" src="js/lib/jquery_history.js"></script>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="css/modal.css" rel="stylesheet" type="text/css" />
-    <link href="css/entity.css" rel="stylesheet" type="text/css" />
+    <link href="css/table.css" rel="stylesheet" type="text/css" />
+    <link href="css/lightbox.css" rel="stylesheet" type="text/css" />
+    <link href="css/slider.css" rel="stylesheet" type="text/css" />
+    <link href="css/form.css" rel="stylesheet" type="text/css" />
     <link href="css/controls.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <h1>
         Пользователи</h1>
-    <form>
-    <input type="text" class="ui-filter-text" />
-    <select class="ui-filter-select">
+    <form class="filtersform ">
+    <span class="field"> Поиск: </span><input type="text" class="ui-filter-text formfield" />
+
+    <span class="field"> Город: </span>
+
+    <select class="ui-filter-select formfield">
         <option value="">Все</option>
-    </select>&nbsp;&nbsp;&nbsp;<a href="#" class="ui-action person-add">Добавить пользователя</a></form>
+    </select>
+    <a href="#" class="ui-action person-add">Добавить пользователя</a></form>
     <table class=" ui-table-data">
         <thead id="thead_persons" class="ui-fixed-thead">
         </thead>
         <tbody>
         </tbody>
     </table>
+    
     <div class="persons-formview">
     </div>
     <script type="text/javascript" src="js/controls/table.js"></script>
     <script type="text/javascript" src="js/controls/lightbox.js"></script>
     <script type="text/javascript" src="js/controls/multiplein.js"></script>
-     <script type="text/javascript" src="js/controls/jqueryrVal.js"></script>
+    <script type="text/javascript" src="js/controls/slider.js"></script>
+     <script type="text/javascript" src="js/controls/jqueryrval.js"></script>
     <script type="text/javascript" src="js/utils/utils.js"></script>
 
     <script type="text/javascript" src="js/engine/history.js"></script>
@@ -37,16 +45,19 @@
     <script type="text/javascript" src="js/engine/dataview.js"></script>
     <script type="text/javascript" src="js/engine/tbl_storage.js"></script>
     <script type="text/javascript" src="js/engine/template.js"></script>
-    <script type="text/javascript" src="js/engine/AddEditFormControl.js"></script>
+    <script type="text/javascript" src="js/engine/entityeditor.js"></script>
 
     <script type="text/javascript" src="js/filter/filter.js"></script>
     <script type="text/javascript" src="js/filter/searching.js"></script>
     <script type="text/javascript" src="js/filter/sortfiltering.js"></script>
     <script type="text/javascript" src="js/filter/selectfiltering.js"></script>
+    
     <script type="text/javascript" src="js/persons/data.js"></script>
-    <script type="text/javascript" src="js/persons/Person.js"></script>
-    <script type="text/javascript" src="js/persons/StorageDataInit.js"></script>
-    <script type="text/javascript" src="js/persons/setFilters.js"></script>
+    <script type="text/javascript" src="js/persons/formfields.js"></script>
+    
+    <script type="text/javascript" src="js/persons/person.js"></script>
+    <script type="text/javascript" src="js/persons/storagedatainit.js"></script>
+    <script type="text/javascript" src="js/persons/setfilters.js"></script>
     <script type="text/javascript" src="js/persons/template.js"></script>
     <script type="text/javascript">
 
@@ -80,7 +91,7 @@
         $(".persons-formview").hide();
 
 
-        var PersonAddEdit = new AddEditFormControl({ but_begin: ".person-add",
+        var PersonEditor = new EntityEditor({ but_begin: ".person-add",
             but_edit: ".person-edit",
             storage: PersonsTable,
             formview: ".persons-formview",
@@ -91,7 +102,7 @@
 
 
         var mc = new MultipleInput(".ui-multipleinput")
-        
+        var sliderCnts = new SliderInputCreator(".ui-sliderinput")
        
     </script>
 </body>

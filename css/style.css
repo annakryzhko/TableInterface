@@ -6,91 +6,40 @@
 body
 {
     margin-left: 20px;
+    font-family: Verdana, Arial, Sans-Serif;
+    font-size: 80%;
 }
-
-table
-{
-    border-collapse: collapse;
-    border: 0;
-    padding: 0;
-    width: 99%;
-    max-width: 99%;
-    position: relative;
-    vertical-align: top;
-}
-tr
+form, div
 {
     position: relative;
 }
-table td
+span.field
 {
-    padding: 0.2em 0.5em;
-    white-space: nowrap;
-    vertical-align: top;
+    padding: 0 0.5em 0 0;
 }
-.ui-fixed-thead
+h1
 {
-    background: #fff;
-    padding: 0;
-    margin: 0;
+    margin-bottom: 0.2em;
+    padding-bottom: 0;
 }
-.ui-fixed-thead td
+.formfield
 {
-    border-width: 0;
-    margin: 0;
-    cursor: pointer;
+    margin: 0 1em 0 0;
 }
-.ui-fixed-thead td
+form.filtersform
 {
-    border-bottom: #ccc 1px dashed;
-}
-tbody tr:hover
-{
-    background: #f5f5f5;
-}
-td.cut
-{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -o-text-overflow: ellipsis;
-    -ms-text-overflow: ellipsis;
+    padding: 0.5em 0.25em;
+    background: #efefef;
 }
 
-td.center
-{
-    text-align: center;
-}
-
-td.right
-{
-    text-align: right;
-    padding-right: 0.5em;
-}
-
-.ui-fixed-thead td a
+.ui-action
 {
     text-decoration: none;
-    color: #000;
-}
-.fixed
-{
-    position: fixed;
-    z-index: 1000;
-    top: 0px;
-    border-collapse: collapse;
-    border: 0;
-    padding: 0;
-    background: #fff;
+    border-bottom: 1px dashed #0000ff;
+    cursor: pointer;
+    color: #0000ff;
 }
 
-tbody.loading
-{
-    background: #eee;
-    -moz-opacity: 0.5;
-    -webkit-opacity: 0.5;
-    opacity: 0.5;
-}
 
 div.ui-paging a
 {
@@ -109,11 +58,4 @@ div.ui-paging a.ui-active
     color: #660066;
     text-decoration: none;
 }
-a.asc:after
-{
-    content: "↑";
-}
-a.desc:after
-{
-    content: "↓";
-}
+

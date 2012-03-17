@@ -15,7 +15,7 @@ jQuery.fn.rVal = function (value) {
                 return MultipleInputControl.getValue.apply(ele);
             }
              else {
-                return ele.val();
+                 return utils.string.xssDefend(ele.val());
             }
         }
     }

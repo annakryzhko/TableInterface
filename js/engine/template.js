@@ -2,23 +2,28 @@
 
 var FormTemplate = {};
 
-FormTemplate.TableForm  = function (data) {
+FormTemplate.TableForm = function (data) {
     var str, i, lng = data.length;
-    str = "<table>";
+    str = "<table class='formtable'>";
     for (i = 0; i < lng; i++) {
         str += "<tr><td>" + FormTemplate.FieldLbl(data[i]) + "</td><td>" + FormTemplate.FieldCnt(data[i]) + "</td></tr>";
     }
-    str += "</table";
+    str += "</table>";
+
     return str;
 }
 FormTemplate.FieldLbl = function (data) {
-    return "<label for='" + data.name + "'>" + data.title + "</label>";
+    var reqLbl = '', attr = data.attr;
+    if (attr['required']) {
+        reqLbl = "<span class='ui-required'>*</span>"
+    }
+    return "<label for='" + data.name + "'>" + data.lbl + reqLbl + "</label>";
 }
 
 FormTemplate.FieldCnt = function (data) {
-    var i, lng, elem, 
-        cont = document.createElement("div"), 
-        at, attr = data.attr;
+    var i, lng, elem,
+        cont = document.createElement("div"),
+        at, attr = data.attr, invalid = '';
     data.elem = data.elem || "input";
     elem = document.createElement(data.elem);
     if (data.type) {
@@ -27,15 +32,17 @@ FormTemplate.FieldCnt = function (data) {
     if (data.className) {
         elem.className = data.className;
     }
-    if (attr) {
-        for (at in attr) {
-            if (attr.hasOwnProperty(at)) {
-                $(elem).attr(at, attr[at]);
-            }
+    if (data.invalid) {
+        invalid = "<span class='ui-invalid'>" + data.invalid + "</span>";
+    }
+    for (at in attr) {
+        if (attr.hasOwnProperty(at)) {
+            $(elem).attr(at, attr[at]);
         }
     }
+
     cont.appendChild(elem);
-    return cont.innerHTML
+    return cont.innerHTML + invalid;
 }
 
 FormTemplate.SelectOptions = function (data) {
@@ -48,14 +55,14 @@ FormTemplate.SelectOptions = function (data) {
 };
 
 
-var TblTemplate ={};
+var TblTemplate = {};
 
 TblTemplate.SortCols = function (cols) {
     var str = "", j,
         lng = cols.length;
     str += "<tr>";
     for (j = 0; j < lng; j++) {
-        str += "<td> <a href='' data-col='" + cols[j].name + "'  >" + cols[j].title + "</a></td>";
+        str += "<th> <a href='' data-col='" + cols[j].name + "'  >" + cols[j].title + "</a></th>";
     }
     str += "<td></td></tr>";
     return str;
